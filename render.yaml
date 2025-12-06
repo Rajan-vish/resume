@@ -1,0 +1,32 @@
+# Render service definition for the backend (server)
+# Replace placeholder environment variable values on Render dashboard
+services:
+  - type: web
+    name: resume-backend
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm run start
+    repo: https://github.com/Rajan-vish/resume.git
+    branch: main
+    autoDeploy: true
+    envVars:
+      - key: JWT_SECRET
+        value: "REPLACE_ME"
+        sync: false
+      - key: MONGODB_URI
+        value: "REPLACE_ME"
+        sync: false
+      - key: IMAGEKIT_PRIVATE_KEY
+        value: "REPLACE_ME"
+        sync: false
+      - key: OPENAI_API_KEY
+        value: "REPLACE_ME"
+        sync: false
+      - key: OPENAI_BASE_URL
+        value: "REPLACE_ME"
+        sync: false
+      - key: OPENAI_MODEL
+        value: "REPLACE_ME"
+        sync: false
